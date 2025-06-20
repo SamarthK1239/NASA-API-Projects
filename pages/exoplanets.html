@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanets - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/exoplanets.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link active">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">🪐 Exoplanets</h1>
+                <p class="page-subtitle">Discover worlds beyond our solar system</p>
+            </div>
+        </section>
+
+        <section class="exoplanet-stats">
+            <div class="container">
+                <div class="stats-overview">
+                    <div class="stat-big">
+                        <span class="stat-number" id="total-planets">0</span>
+                        <span class="stat-label">Confirmed Exoplanets</span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="habitable-planets">0</span>
+                            <span class="stat-label">Potentially Habitable</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="multi-planet-systems">0</span>
+                            <span class="stat-label">Multi-Planet Systems</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="earth-size-planets">0</span>
+                            <span class="stat-label">Earth-Size Planets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="exoplanet-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <div class="search-controls">
+                        <div class="input-group">
+                            <label for="planet-search">Search by Name:</label>
+                            <input type="text" id="planet-search" class="text-input" placeholder="Enter planet or star name">
+                        </div>
+                        <div class="input-group">
+                            <label for="discovery-year">Discovery Year:</label>
+                            <select id="discovery-year" class="select-input">
+                                <option value="">All Years</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label>Planet Type:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="filter-terrestrial" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Terrestrial
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="filter-gas-giant" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Gas Giant
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="filter-super-earth" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Super Earth
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="sort-group">
+                            <label for="sort-by">Sort By:</label>
+                            <select id="sort-by" class="select-input">
+                                <option value="discovery">Discovery Year</option>
+                                <option value="distance">Distance</option>
+                                <option value="radius">Planet Radius</option>
+                                <option value="mass">Planet Mass</option>
+                                <option value="period">Orbital Period</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="load-exoplanets" class="btn btn-primary">Load Exoplanets</button>
+                        <button id="random-planets" class="btn btn-secondary">Random Selection</button>
+                        <button id="habitable-zone" class="btn btn-secondary">Habitable Zone</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="exoplanet-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2 id="exoplanet-title">Exoplanet Catalog</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid">Grid View</button>
+                        <button class="view-btn" data-view="list">List View</button>
+                        <button class="view-btn" data-view="chart">Chart View</button>
+                    </div>
+                </div>
+                
+                <div id="exoplanet-container" class="exoplanet-container">
+                    <!-- Exoplanet content will be loaded here -->
+                </div>
+                
+                <div class="load-more-container">
+                    <button id="load-more-planets" class="btn btn-secondary" style="display: none;">Load More Planets</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="exoplanet-visualization" id="chart-container" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Exoplanet Visualization</h2>
+                <div class="chart-controls">
+                    <select id="chart-type" class="select-input">
+                        <option value="mass-radius">Mass vs Radius</option>
+                        <option value="distance-year">Distance vs Discovery Year</option>
+                        <option value="period-radius">Orbital Period vs Radius</option>
+                    </select>
+                </div>
+                <div id="chart-canvas" class="chart-canvas">
+                    <!-- Chart will be rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="exoplanet-info">
+            <div class="container">
+                <h2 class="section-title">About Exoplanets</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">🔍</div>
+                        <h3>Discovery Methods</h3>
+                        <p>Exoplanets are discovered using various techniques including transit photometry, radial velocity, direct imaging, and gravitational microlensing.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🌡️</div>
+                        <h3>Habitable Zone</h3>
+                        <p>The "Goldilocks zone" where liquid water could exist on a planet's surface - not too hot, not too cold, but just right for life as we know it.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📡</div>
+                        <h3>Space Telescopes</h3>
+                        <p>Kepler, TESS, and James Webb Space Telescope have revolutionized exoplanet discovery and characterization capabilities.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🧬</div>
+                        <h3>Astrobiology</h3>
+                        <p>Studying exoplanet atmospheres for biosignatures that could indicate the presence of life beyond Earth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notable-exoplanets">
+            <div class="container">
+                <h2 class="section-title">Notable Discoveries</h2>
+                <div class="notable-grid">
+                    <div class="notable-card">
+                        <h3>Proxima Centauri b</h3>
+                        <div class="notable-stats">
+                            <span class="stat">Distance: 4.24 light-years</span>
+                            <span class="stat">Discovery: 2016</span>
+                            <span class="stat">Type: Terrestrial</span>
+                        </div>
+                        <p>The closest known exoplanet to Earth, located in the habitable zone of Proxima Centauri.</p>
+                    </div>
+                    
+                    <div class="notable-card">
+                        <h3>Kepler-452b</h3>
+                        <div class="notable-stats">
+                            <span class="stat">Distance: 1,402 light-years</span>
+                            <span class="stat">Discovery: 2015</span>
+                            <span class="stat">Type: Super Earth</span>
+                        </div>
+                        <p>Known as "Earth's cousin," this planet orbits in the habitable zone of a Sun-like star.</p>
+                    </div>
+                    
+                    <div class="notable-card">
+                        <h3>TRAPPIST-1 System</h3>
+                        <div class="notable-stats">
+                            <span class="stat">Distance: 40 light-years</span>
+                            <span class="stat">Discovery: 2016-2017</span>
+                            <span class="stat">Planets: 7</span>
+                        </div>
+                        <p>Seven Earth-sized planets, three potentially in the habitable zone around an ultra-cool dwarf star.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Exoplanet Resources</h4>
+                    <ul>
+                        <li><a href="https://exoplanets.nasa.gov/">NASA Exoplanets</a></li>
+                        <li><a href="https://exoplanetarchive.ipac.caltech.edu/">Exoplanet Archive</a></li>
+                        <li><a href="https://www.jwst.nasa.gov/">James Webb Space Telescope</a></li>
+                        <li><a href="https://tess.mit.edu/">TESS Mission</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Discovery Missions</h4>
+                    <ul>
+                        <li>Kepler Space Telescope</li>
+                        <li>TESS (Transiting Exoplanet Survey Satellite)</li>
+                        <li>James Webb Space Telescope</li>
+                        <li>Hubble Space Telescope</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Exoplanet data provided by NASA Exoplanet Archive.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/exoplanets.js"></script>
+</body>
+</html>

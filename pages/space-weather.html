@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Weather - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/space-weather.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link active">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>    <main class="main-content">
+        <div class="space-weather-container">
+            <header class="space-weather-header">
+                <h1>⚡ Space Weather Dashboard</h1>
+                <p>Real-time monitoring of solar activity and space weather events affecting Earth</p>
+            </header>
+
+            <div class="refresh-controls">
+                <button class="btn btn-primary" id="refresh-btn">🔄 Refresh Data</button>
+                <div class="auto-refresh">
+                    <input type="checkbox" id="auto-refresh" checked>
+                    <label for="auto-refresh">Auto-refresh</label>
+                    <div class="refresh-indicator"></div>
+                    <span>Last updated: <span id="last-update-time">--:--</span></span>
+                </div>
+            </div>
+
+            <section class="status-overview" id="status-overview">
+                <!-- Status cards will be loaded here -->
+            </section>
+
+            <section class="current-conditions">
+                <h3>🌌 Current Solar Wind Conditions</h3>
+                <div class="conditions-grid">
+                    <!-- Current conditions will be loaded here -->
+                </div>
+            </section>            <section class="solar-activity" id="solar-activity">
+                <!-- Solar activity charts will be loaded here -->
+            </section>
+
+            <section class="aurora-forecast" id="aurora-forecast">
+                <h3>🌌 Aurora Forecast</h3>
+                <div class="aurora-map">
+                    <!-- Aurora forecast map will be loaded here -->
+                </div>
+                <div class="aurora-legend">
+                    <div class="legend-item">
+                        <div class="legend-color low"></div>
+                        <span>Low Activity</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color moderate"></div>
+                        <span>Moderate Activity</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color high"></div>
+                        <span>High Activity</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="satellites-tracking" id="satellites-tracking">
+                <h3>🛰️ Satellite Status</h3>
+                <div class="satellite-list">
+                    <!-- Satellite tracking data will be loaded here -->
+                </div>
+            </section>
+
+            <section class="alerts-section" id="alerts-section">
+                <h3>⚠️ Space Weather Alerts</h3>
+                <!-- Alerts will be loaded here -->
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Space Weather Resources</h4>
+                    <ul>
+                        <li><a href="https://www.swpc.noaa.gov/">NOAA Space Weather</a></li>
+                        <li><a href="https://sdo.gsfc.nasa.gov/">Solar Dynamics Observatory</a></li>
+                        <li><a href="https://www.nasa.gov/mission_pages/soho/">SOHO Mission</a></li>
+                        <li><a href="https://spaceweather.gov/">Space Weather Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Monitoring Systems</h4>
+                    <ul>
+                        <li>GOES Satellites</li>
+                        <li>ACE Spacecraft</li>
+                        <li>DSCOVR Mission</li>
+                        <li>Ground-based Magnetometers</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Space weather data provided by NOAA/NASA.</p>
+            </div>
+        </div>    </footer>
+
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div>Loading space weather data...</div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/space-weather.js"></script>
+</body>
+</html>

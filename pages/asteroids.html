@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Near Earth Objects - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/asteroids.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link active">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">☄️ Near Earth Objects</h1>
+                <p class="page-subtitle">Track asteroids and comets that pass close to our planet</p>
+            </div>
+        </section>
+
+        <section class="neo-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <div class="date-range">
+                        <div class="date-input-group">
+                            <label for="start-date">Start Date:</label>
+                            <input type="date" id="start-date" class="date-input">
+                        </div>
+                        <div class="date-input-group">
+                            <label for="end-date">End Date:</label>
+                            <input type="date" id="end-date" class="date-input">
+                        </div>
+                    </div>
+                    <div class="control-buttons">
+                        <button id="load-neos" class="btn btn-primary">Load NEOs</button>
+                        <button id="today-neos" class="btn btn-secondary">Today's NEOs</button>
+                        <button id="this-week" class="btn btn-secondary">This Week</button>
+                    </div>
+                </div>
+                
+                <div class="neo-stats" id="neo-stats" style="display: none;">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-neos">0</div>
+                            <div class="stat-label">Total NEOs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="hazardous-neos">0</div>
+                            <div class="stat-label">Potentially Hazardous</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="largest-diameter">0</div>
+                            <div class="stat-label">Largest (km)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="closest-distance">0</div>
+                            <div class="stat-label">Closest (km)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="neo-content">
+            <div class="container">
+                <div class="content-header">
+                    <h2 id="neo-title">Near Earth Objects</h2>
+                    <div class="filter-controls">
+                        <select id="sort-select" class="select-input">
+                            <option value="date">Sort by Date</option>
+                            <option value="size">Sort by Size</option>
+                            <option value="distance">Sort by Distance</option>
+                            <option value="velocity">Sort by Velocity</option>
+                        </select>
+                        <div class="toggle-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="show-hazardous">
+                                <span class="toggle-slider"></span>
+                                Show only hazardous
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="neo-container" class="neo-container">
+                    <!-- NEO content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="neo-info">
+            <div class="container">
+                <h2 class="section-title">About Near Earth Objects</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">🌍</div>
+                        <h3>What are NEOs?</h3>
+                        <p>Near Earth Objects are asteroids and comets with orbits that bring them within 30 million miles (50 million kilometers) of Earth's orbit.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⚠️</div>
+                        <h3>Potentially Hazardous</h3>
+                        <p>Objects larger than 140 meters that come within 4.6 million miles of Earth are classified as potentially hazardous.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🔭</div>
+                        <h3>Tracking & Monitoring</h3>
+                        <p>NASA continuously monitors NEOs using ground-based telescopes and space-based observatories to predict their paths.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🛡️</div>
+                        <h3>Planetary Defense</h3>
+                        <p>Understanding NEO orbits helps scientists develop strategies to deflect potentially dangerous objects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="neo-timeline">
+            <div class="container">
+                <h2 class="section-title">Upcoming Close Approaches</h2>
+                <div id="timeline-container" class="timeline-container">
+                    <!-- Timeline will be generated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>NEO Resources</h4>
+                    <ul>
+                        <li><a href="https://cneos.jpl.nasa.gov/">CNEOS - NASA/JPL</a></li>
+                        <li><a href="https://www.nasa.gov/planetarydefense/">Planetary Defense</a></li>
+                        <li><a href="https://neo.ssa.esa.int/">ESA Space Situational Awareness</a></li>
+                        <li><a href="https://minorplanetcenter.net/">Minor Planet Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Classification</h4>
+                    <ul>
+                        <li>Near Earth Asteroids (NEAs)</li>
+                        <li>Near Earth Comets (NECs)</li>
+                        <li>Potentially Hazardous Objects (PHOs)</li>
+                        <li>Apollo, Aten, Amor Groups</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. NEO data provided by NASA/JPL CNEOS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/asteroids.js"></script>
+</body>
+</html>

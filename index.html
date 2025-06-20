@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA API Explorer</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="pages/mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="pages/asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="pages/earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="pages/exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="pages/space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Explore the Universe</h1>
+                <p class="hero-subtitle">Discover the cosmos through NASA's incredible APIs</p>
+                <div class="hero-buttons">
+                    <a href="pages/apod.html" class="btn btn-primary">Start Exploring</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-background">
+                <div class="stars"></div>
+                <div class="planet"></div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Discover Amazing Space Data</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌌</div>
+                        <h3>Astronomy Picture of the Day</h3>
+                        <p>Explore stunning daily images from space with detailed explanations from NASA astronomers.</p>
+                        <a href="pages/apod.html" class="feature-link">Explore →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Mars Rover Photos</h3>
+                        <p>Browse thousands of photos taken by NASA's Mars rovers including Curiosity, Opportunity, and Spirit.</p>
+                        <a href="pages/mars-rover.html" class="feature-link">Explore →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">☄️</div>
+                        <h3>Near Earth Objects</h3>
+                        <p>Track asteroids and comets that pass close to Earth with real-time data and orbital information.</p>
+                        <a href="pages/asteroids.html" class="feature-link">Explore →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Earth Imagery</h3>
+                        <p>View satellite images of any location on Earth taken by NASA's Landsat 8 satellite.</p>
+                        <a href="pages/earth-imagery.html" class="feature-link">Explore →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🪐</div>
+                        <h3>Exoplanets</h3>
+                        <p>Discover planets beyond our solar system with data from NASA's exoplanet archive.</p>
+                        <a href="pages/exoplanets.html" class="feature-link">Explore →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Space Weather</h3>
+                        <p>Monitor solar flares, geomagnetic storms, and other space weather events affecting Earth.</p>
+                        <a href="pages/space-weather.html" class="feature-link">Explore →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1000000">0</span>
+                        <span class="stat-label">Images Available</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="6">0</span>
+                        <span class="stat-label">API Endpoints</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="24">0</span>
+                        <span class="stat-label">Hours Updated</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="365">0</span>
+                        <span class="stat-label">Days of Data</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://api.nasa.gov/">NASA API Portal</a></li>
+                        <li><a href="https://www.nasa.gov/">NASA Official Site</a></li>
+                        <li><a href="https://github.com/nasa">NASA on GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>APIs Used</h4>
+                    <ul>
+                        <li>Astronomy Picture of the Day</li>
+                        <li>Mars Rover Photos</li>
+                        <li>Near Earth Object Web Service</li>
+                        <li>Earth Polychromatic Imaging Camera</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Data provided by NASA Open Data Portal.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

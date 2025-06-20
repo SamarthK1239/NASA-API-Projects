@@ -1,0 +1,536 @@
+/* Space Weather Page Styles */
+
+.space-weather-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.space-weather-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.space-weather-header h1 {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: solar-flare 3s ease-in-out infinite alternate;
+}
+
+@keyframes solar-flare {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 107, 53, 0.5)); }
+}
+
+.space-weather-header p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.status-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.status-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.status-card.low {
+    border-color: #4CAF50;
+}
+
+.status-card.moderate {
+    border-color: #FF9800;
+}
+
+.status-card.high {
+    border-color: #F44336;
+}
+
+.status-card.extreme {
+    border-color: #9C27B0;
+    animation: extreme-warning 2s ease-in-out infinite alternate;
+}
+
+@keyframes extreme-warning {
+    0% { box-shadow: 0 0 20px rgba(156, 39, 176, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(156, 39, 176, 0.6); }
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.status-card.low .status-icon { color: #4CAF50; }
+.status-card.moderate .status-icon { color: #FF9800; }
+.status-card.high .status-icon { color: #F44336; }
+.status-card.extreme .status-icon { color: #9C27B0; }
+
+.status-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.status-level {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.status-description {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.current-conditions {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.current-conditions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.condition-item {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.condition-item:hover {
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.condition-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.condition-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.condition-unit {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.solar-activity {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.activity-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.activity-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.activity-chart {
+    width: 100%;
+    height: 250px;
+    background: var(--bg-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border-color);
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.aurora-forecast {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.aurora-forecast h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.aurora-map {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(180deg, #001122 0%, #003366 50%, #004488 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4CAF50;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.aurora-map::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at top, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+    animation: aurora-dance 4s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-dance {
+    0% { opacity: 0.3; transform: translateY(0px); }
+    100% { opacity: 0.7; transform: translateY(-20px); }
+}
+
+.aurora-legend {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.legend-color.low { background: #4CAF50; }
+.legend-color.moderate { background: #FF9800; }
+.legend-color.high { background: #F44336; }
+
+.satellites-tracking {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.satellites-tracking h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.satellite-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.satellite-item {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.satellite-item:hover {
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.satellite-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.satellite-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.satellite-status.operational { background: #4CAF50; }
+.satellite-status.warning { background: #FF9800; }
+.satellite-status.critical { background: #F44336; }
+
+.satellite-name {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.satellite-details {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.satellite-metrics {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric-value {
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+}
+
+.metric-label {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.alerts-section {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.alerts-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-item {
+    background: var(--bg-color);
+    border-left: 4px solid #FF9800;
+    border-radius: 0 10px 10px 0;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.alert-item:hover {
+    transform: translateX(5px);
+}
+
+.alert-item.high {
+    border-left-color: #F44336;
+    background: rgba(244, 67, 54, 0.05);
+}
+
+.alert-item.extreme {
+    border-left-color: #9C27B0;
+    background: rgba(156, 39, 176, 0.05);
+    animation: pulse-alert 2s ease-in-out infinite;
+}
+
+@keyframes pulse-alert {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.alert-title {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.alert-time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.alert-description {
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.refresh-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.auto-refresh {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.refresh-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4CAF50;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .space-weather-container {
+        padding: 1rem;
+    }
+    
+    .space-weather-header h1 {
+        font-size: 2rem;
+    }
+    
+    .status-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .conditions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .solar-activity {
+        grid-template-columns: 1fr;
+    }
+    
+    .satellite-metrics {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .alert-header {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .refresh-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .conditions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .satellite-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .satellite-metrics {
+        justify-content: space-around;
+        width: 100%;
+    }
+    
+    .aurora-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy Picture of the Day - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/apod.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link active">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">🌌 Astronomy Picture of the Day</h1>
+                <p class="page-subtitle">Discover the cosmos through NASA's daily featured images and explanations</p>
+            </div>
+        </section>
+
+        <section class="apod-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <div class="date-controls">
+                        <label for="apod-date">Select Date:</label>
+                        <input type="date" id="apod-date" class="date-input">
+                        <button id="load-apod" class="btn btn-primary">Load Image</button>
+                    </div>
+                    <div class="quick-actions">
+                        <button id="random-apod" class="btn btn-secondary">Random Images</button>
+                        <button id="today-apod" class="btn btn-secondary">Today's Image</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apod-content">
+            <div class="container">
+                <div id="apod-container" class="apod-container">
+                    <!-- APOD content will be loaded here -->
+                </div>
+                
+                <div id="random-gallery" class="random-gallery" style="display: none;">
+                    <h2 class="gallery-title">Random Astronomy Pictures</h2>
+                    <div class="gallery-grid">
+                        <!-- Random images will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apod-info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>📅 Daily Updates</h3>
+                        <p>Every day, NASA features a new image or photograph of our universe, along with a brief explanation written by a professional astronomer.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔭 Professional Quality</h3>
+                        <p>Images are carefully selected and curated by NASA astronomers and often include cutting-edge research and discoveries.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📚 Educational Content</h3>
+                        <p>Each image comes with detailed explanations that help you understand the science behind what you're seeing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://api.nasa.gov/">NASA API Portal</a></li>
+                        <li><a href="https://apod.nasa.gov/">Official APOD Site</a></li>
+                        <li><a href="https://www.nasa.gov/">NASA Official Site</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About APOD</h4>
+                    <ul>
+                        <li>Started in 1995</li>
+                        <li>Over 9,000 images featured</li>
+                        <li>Available in multiple languages</li>
+                        <li>Educational resource worldwide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Images and data provided by NASA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/apod.js"></script>
+</body>
+</html>

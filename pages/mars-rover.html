@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Rover Photos - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/mars-rover.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link active">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">🚀 Mars Rover Photos</h1>
+                <p class="page-subtitle">Explore the Red Planet through the eyes of NASA's Mars rovers</p>
+            </div>
+        </section>
+
+        <section class="rover-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <div class="rover-selector">
+                        <label for="rover-select">Select Rover:</label>
+                        <select id="rover-select" class="select-input">
+                            <option value="curiosity">Curiosity</option>
+                            <option value="opportunity">Opportunity</option>
+                            <option value="spirit">Spirit</option>
+                            <option value="perseverance">Perseverance</option>
+                        </select>
+                    </div>
+                    
+                    <div class="sol-input">
+                        <label for="sol-number">Sol (Mars Day):</label>
+                        <input type="number" id="sol-number" class="number-input" value="1000" min="1" max="4000">
+                    </div>
+                    
+                    <div class="camera-selector">
+                        <label for="camera-select">Camera:</label>
+                        <select id="camera-select" class="select-input">
+                            <option value="">All Cameras</option>
+                            <option value="fhaz">Front Hazard Avoidance</option>
+                            <option value="rhaz">Rear Hazard Avoidance</option>
+                            <option value="mast">Mast Camera</option>
+                            <option value="chemcam">Chemistry Camera</option>
+                            <option value="mahli">Hand Lens Imager</option>
+                            <option value="mardi">Descent Imager</option>
+                            <option value="navcam">Navigation Camera</option>
+                        </select>
+                    </div>
+                    
+                    <button id="load-photos" class="btn btn-primary">Load Photos</button>
+                </div>
+                
+                <div class="rover-info" id="rover-info">
+                    <!-- Rover information will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="photos-section">
+            <div class="container">
+                <div class="photos-header">
+                    <h2 id="photos-title">Mars Rover Photos</h2>
+                    <div class="photo-count" id="photo-count"></div>
+                </div>
+                
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All Photos</button>
+                    <button class="filter-btn" data-filter="landscape">Landscape</button>
+                    <button class="filter-btn" data-filter="closeup">Close-up</button>
+                    <button class="filter-btn" data-filter="panoramic">Panoramic</button>
+                </div>
+                
+                <div id="photos-container" class="photos-container">
+                    <!-- Photos will be loaded here -->
+                </div>
+                
+                <div class="load-more-container">
+                    <button id="load-more" class="btn btn-secondary" style="display: none;">Load More Photos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="rover-comparison">
+            <div class="container">
+                <h2 class="section-title">Mars Rover Comparison</h2>
+                <div class="comparison-grid">
+                    <div class="rover-card" data-rover="curiosity">
+                        <div class="rover-image">
+                            <div class="rover-icon">🔬</div>
+                        </div>
+                        <h3>Curiosity</h3>
+                        <div class="rover-stats">
+                            <div class="stat">
+                                <span class="stat-label">Launch:</span>
+                                <span class="stat-value">2011</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Landing:</span>
+                                <span class="stat-value">Aug 5, 2012</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Status:</span>
+                                <span class="stat-value status-active">Active</span>
+                            </div>
+                        </div>
+                        <p>Car-sized rover equipped with advanced scientific instruments for geological analysis.</p>
+                    </div>
+                    
+                    <div class="rover-card" data-rover="perseverance">
+                        <div class="rover-image">
+                            <div class="rover-icon">🔍</div>
+                        </div>
+                        <h3>Perseverance</h3>
+                        <div class="rover-stats">
+                            <div class="stat">
+                                <span class="stat-label">Launch:</span>
+                                <span class="stat-value">2020</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Landing:</span>
+                                <span class="stat-value">Feb 18, 2021</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Status:</span>
+                                <span class="stat-value status-active">Active</span>
+                            </div>
+                        </div>
+                        <p>Most advanced rover searching for signs of ancient microbial life on Mars.</p>
+                    </div>
+                    
+                    <div class="rover-card" data-rover="opportunity">
+                        <div class="rover-image">
+                            <div class="rover-icon">⚡</div>
+                        </div>
+                        <h3>Opportunity</h3>
+                        <div class="rover-stats">
+                            <div class="stat">
+                                <span class="stat-label">Launch:</span>
+                                <span class="stat-value">2003</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Landing:</span>
+                                <span class="stat-value">Jan 25, 2004</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Status:</span>
+                                <span class="stat-value status-inactive">Completed</span>
+                            </div>
+                        </div>
+                        <p>Operated for 15 years, far exceeding its planned 90-day mission.</p>
+                    </div>
+                    
+                    <div class="rover-card" data-rover="spirit">
+                        <div class="rover-image">
+                            <div class="rover-icon">🌋</div>
+                        </div>
+                        <h3>Spirit</h3>
+                        <div class="rover-stats">
+                            <div class="stat">
+                                <span class="stat-label">Launch:</span>
+                                <span class="stat-value">2003</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Landing:</span>
+                                <span class="stat-value">Jan 4, 2004</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Status:</span>
+                                <span class="stat-value status-inactive">Completed</span>
+                            </div>
+                        </div>
+                        <p>Discovered evidence of past water activity and volcanic processes on Mars.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Mars Missions</h4>
+                    <ul>
+                        <li><a href="https://mars.nasa.gov/mars2020/">Perseverance Mission</a></li>
+                        <li><a href="https://mars.nasa.gov/msl/">Curiosity Mission</a></li>
+                        <li><a href="https://mars.nasa.gov/mer/">MER Mission</a></li>
+                        <li><a href="https://mars.nasa.gov/">Mars Exploration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Camera Types</h4>
+                    <ul>
+                        <li>Hazard Avoidance Cameras</li>
+                        <li>Mast Camera (MastCam)</li>
+                        <li>Chemistry Camera (ChemCam)</li>
+                        <li>Navigation Camera (NavCam)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Mars rover data provided by NASA/JPL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/mars-rover.js"></script>
+</body>
+</html>

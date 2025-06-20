@@ -1,0 +1,495 @@
+/* Mars Rover Page Specific Styles */
+
+.rover-controls {
+    padding: 40px 0;
+    background: var(--card-bg);
+}
+
+.controls-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+    margin-bottom: 30px;
+}
+
+.rover-selector,
+.sol-input,
+.camera-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rover-selector label,
+.sol-input label,
+.camera-selector label {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.select-input,
+.number-input {
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.select-input:focus,
+.number-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.rover-info {
+    background: var(--dark-bg);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    display: none;
+}
+
+.rover-info.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.rover-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+}
+
+.rover-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.photos-section {
+    padding: 60px 0;
+}
+
+.photos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#photos-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.photo-count {
+    background: var(--gradient-1);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.photos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.photo-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.photo-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-image {
+    transform: scale(1.05);
+}
+
+.photo-info {
+    padding: 20px;
+}
+
+.photo-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.photo-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.photo-date {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.load-more-container {
+    text-align: center;
+}
+
+.rover-comparison {
+    padding: 80px 0;
+    background: var(--dark-bg);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.rover-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.rover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.rover-card[data-rover="curiosity"]:hover {
+    border-color: #ff6b35;
+}
+
+.rover-card[data-rover="perseverance"]:hover {
+    border-color: #667eea;
+}
+
+.rover-card[data-rover="opportunity"]:hover {
+    border-color: #ffd700;
+}
+
+.rover-card[data-rover="spirit"]:hover {
+    border-color: #ff6b6b;
+}
+
+.rover-image {
+    margin-bottom: 20px;
+}
+
+.rover-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.rover-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.rover-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--dark-bg);
+    border-radius: 10px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.status-active {
+    color: #4caf50 !important;
+}
+
+.status-inactive {
+    color: #ff9800 !important;
+}
+
+.rover-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.loading-photos {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+}
+
+.loading-photos .loading {
+    margin: 0 auto 20px;
+}
+
+.error-photos {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    grid-column: 1 / -1;
+}
+
+.error-photos h3 {
+    color: #ff6b6b;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.error-photos p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.no-photos {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    grid-column: 1 / -1;
+}
+
+.no-photos h3 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.no-photos p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+/* Image Modal Styles */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.photo-modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    position: relative;
+}
+
+.photo-modal-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.photo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.photo-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.photo-modal-info {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .photos-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #photos-title {
+        font-size: 2rem;
+    }
+
+    .photos-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rover-stats {
+        padding: 15px;
+    }
+
+    .filter-bar {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .photos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-details {
+        grid-template-columns: 1fr;
+    }
+
+    .rover-card {
+        padding: 20px;
+    }
+
+    .controls-wrapper {
+        gap: 15px;
+    }
+
+    .select-input,
+    .number-input {
+        padding: 10px 12px;
+    }
+}

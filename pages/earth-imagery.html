@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Imagery - NASA API Explorer</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/earth-imagery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/nasa-logo.svg" alt="NASA" class="nasa-logo">
+                <span class="nav-title">API Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="apod.html" class="nav-link">Picture of the Day</a></li>
+                <li><a href="mars-rover.html" class="nav-link">Mars Rovers</a></li>
+                <li><a href="asteroids.html" class="nav-link">Near Earth Objects</a></li>
+                <li><a href="earth-imagery.html" class="nav-link active">Earth Imagery</a></li>
+                <li><a href="exoplanets.html" class="nav-link">Exoplanets</a></li>
+                <li><a href="space-weather.html" class="nav-link">Space Weather</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">🌍 Earth Imagery</h1>
+                <p class="page-subtitle">View satellite images of any location on Earth taken by NASA's Landsat satellites</p>
+            </div>
+        </section>
+
+        <section class="earth-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <div class="location-controls">
+                        <div class="input-group">
+                            <label for="latitude">Latitude:</label>
+                            <input type="number" id="latitude" class="number-input" 
+                                   value="40.7128" min="-90" max="90" step="0.0001"
+                                   placeholder="Enter latitude (-90 to 90)">
+                        </div>
+                        <div class="input-group">
+                            <label for="longitude">Longitude:</label>
+                            <input type="number" id="longitude" class="number-input" 
+                                   value="-74.0060" min="-180" max="180" step="0.0001"
+                                   placeholder="Enter longitude (-180 to 180)">
+                        </div>
+                        <div class="input-group">
+                            <label for="image-date">Date:</label>
+                            <input type="date" id="image-date" class="date-input">
+                        </div>
+                        <div class="input-group">
+                            <label for="image-dim">Dimension:</label>
+                            <select id="image-dim" class="select-input">
+                                <option value="0.10">0.10° (11km)</option>
+                                <option value="0.15" selected>0.15° (17km)</option>
+                                <option value="0.20">0.20° (22km)</option>
+                                <option value="0.25">0.25° (28km)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="load-image" class="btn btn-primary">Load Image</button>
+                        <button id="get-location" class="btn btn-secondary">Use My Location</button>
+                        <button id="random-location" class="btn btn-secondary">Random Location</button>
+                    </div>
+                </div>
+                
+                <div class="quick-locations">
+                    <h3>Quick Locations</h3>
+                    <div class="location-grid">
+                        <button class="location-btn" data-lat="40.7128" data-lon="-74.0060" data-name="New York City">
+                            🏙️ New York City
+                        </button>
+                        <button class="location-btn" data-lat="51.5074" data-lon="-0.1278" data-name="London">
+                            🏛️ London
+                        </button>
+                        <button class="location-btn" data-lat="35.6762" data-lon="139.6503" data-name="Tokyo">
+                            🗼 Tokyo
+                        </button>
+                        <button class="location-btn" data-lat="-33.8688" data-lon="151.2093" data-name="Sydney">
+                            🏖️ Sydney
+                        </button>
+                        <button class="location-btn" data-lat="25.2048" data-lon="55.2708" data-name="Dubai">
+                            🏜️ Dubai
+                        </button>
+                        <button class="location-btn" data-lat="-22.9068" data-lon="-43.1729" data-name="Rio de Janeiro">
+                            🏔️ Rio de Janeiro
+                        </button>
+                        <button class="location-btn" data-lat="28.6139" data-lon="77.2090" data-name="New Delhi">
+                            🕌 New Delhi
+                        </button>
+                        <button class="location-btn" data-lat="55.7558" data-lon="37.6176" data-name="Moscow">
+                            🏰 Moscow
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="image-display">
+            <div class="container">
+                <div class="image-header">
+                    <h2 id="image-title">Earth Satellite Image</h2>
+                    <div class="image-info" id="image-info" style="display: none;">
+                        <span class="info-item">
+                            <strong>Location:</strong> <span id="current-location">-</span>
+                        </span>
+                        <span class="info-item">
+                            <strong>Date:</strong> <span id="current-date">-</span>
+                        </span>
+                        <span class="info-item">
+                            <strong>Coordinates:</strong> <span id="current-coords">-</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="image-container" class="image-container">
+                    <div class="image-placeholder">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon">🛰️</div>
+                            <h3>Select a location to view satellite imagery</h3>
+                            <p>Enter coordinates or choose from the quick locations above</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-actions" id="image-actions" style="display: none;">
+                    <button id="download-image" class="btn btn-secondary">Download Image</button>
+                    <button id="share-location" class="btn btn-secondary">Share Location</button>
+                    <button id="view-fullscreen" class="btn btn-secondary">View Fullscreen</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-mode" id="comparison-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Before & After Comparison</h2>
+                <div class="comparison-controls">
+                    <div class="date-inputs">
+                        <div class="input-group">
+                            <label for="before-date">Before Date:</label>
+                            <input type="date" id="before-date" class="date-input">
+                        </div>
+                        <div class="input-group">
+                            <label for="after-date">After Date:</label>
+                            <input type="date" id="after-date" class="date-input">
+                        </div>
+                    </div>
+                    <button id="load-comparison" class="btn btn-primary">Load Comparison</button>
+                </div>
+                
+                <div id="comparison-container" class="comparison-container">
+                    <!-- Comparison images will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="earth-info">
+            <div class="container">
+                <h2 class="section-title">About NASA Earth Imagery</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">🛰️</div>
+                        <h3>Landsat Program</h3>
+                        <p>The longest-running enterprise for satellite imagery, providing continuous Earth observation data since 1972.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🌍</div>
+                        <h3>Global Coverage</h3>
+                        <p>Images cover the entire Earth's surface with a 16-day repeat cycle, capturing seasonal and annual changes.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📊</div>
+                        <h3>Scientific Applications</h3>
+                        <p>Used for agriculture, forestry, geology, cartography, climate monitoring, and disaster response.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🔍</div>
+                        <h3>High Resolution</h3>
+                        <p>Landsat 8 provides 30-meter resolution in visible and infrared bands, capturing detailed surface features.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="image-gallery">
+            <div class="container">
+                <h2 class="section-title">Recent Imagery</h2>
+                <div id="gallery-container" class="gallery-container">
+                    <!-- Recent images will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA API Explorer</h3>
+                    <p>Bringing the wonders of space exploration to your fingertips through NASA's open data.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Earth Observation</h4>
+                    <ul>
+                        <li><a href="https://landsat.gsfc.nasa.gov/">Landsat Mission</a></li>
+                        <li><a href="https://earthdata.nasa.gov/">NASA Earthdata</a></li>
+                        <li><a href="https://worldview.earthdata.nasa.gov/">NASA Worldview</a></li>
+                        <li><a href="https://climate.nasa.gov/">NASA Climate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Applications</h4>
+                    <ul>
+                        <li>Climate Monitoring</li>
+                        <li>Disaster Response</li>
+                        <li>Agricultural Assessment</li>
+                        <li>Urban Planning</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA API Explorer. Earth imagery provided by NASA/USGS Landsat.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/earth-imagery.js"></script>
+</body>
+</html>
